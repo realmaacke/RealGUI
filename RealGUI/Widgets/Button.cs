@@ -1,12 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Apos.Shapes;
-using Microsoft.Xna.Framework.Content;
+using RealGUI.RealGUI;
 
 namespace RealGUI
 {
@@ -14,16 +8,18 @@ namespace RealGUI
     {
         string ButtonName;
         SpriteFont default_font;
+        public Color btnColor { get; set; }
+
         public Button(string name, Vector2 pos, Vector2 sze, Color Background, string ButtonName) : base(name, pos, sze, Background)
         {
             this.ButtonName = ButtonName;
             this.default_font = font;
+            btnColor = Color.White;
         }
         public override void init()
         {
             base.init();
         }
-
 
         public override void draw()
         {
@@ -33,22 +29,33 @@ namespace RealGUI
 
 
                 drawShapeBatch.DrawRectangle(position, size, BackgroundColor, BackgroundColor, 1);
-                drawGraphics.DrawString(font, ButtonName, Calculate.CenterofButton(position, size, font, ButtonName), Color.White);
+
+                
+                drawGraphics.DrawString(font, ButtonName, Calculate.CenterofButton(position, size, font, ButtonName), btnColor);
 
                 drawShapeBatch.End();
             }
         }
 
+        public override void OnHover()
+        {
+            base.OnHover();
+        }
+
         public override void update()
         {
             if (isHovered)
-                BackgroundColor = Color.Red;
+            {
+                BackgroundColor = Config.GreyHover;
+
+                btnColor = Color.Red;
+            }
             else
-                BackgroundColor = Color.Black;
+            {
+                BackgroundColor = Config.NavColor;
+                btnColor = Color.White;
+            }
 
-
-            if (isClicked)
-                show = false;
         }
     }
 }

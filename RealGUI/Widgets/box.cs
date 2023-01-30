@@ -13,11 +13,7 @@ namespace RealGUI
 {
     public class box : Items
     {
-        public box(string name, Vector2 pos, Vector2 sze, Color Background) : base(name, pos, sze, Background)
-        {
-            
-        }
-
+        public box(string name, Vector2 pos, Vector2 sze, Color Background) : base(name, pos, sze, Background) { }
 
         public override void init()
         {
@@ -39,14 +35,7 @@ namespace RealGUI
 
         public override void update()
         {
-            if (isHovered)
-                BackgroundColor = Color.Red;
-            else
-                BackgroundColor = Color.Black;
-
-
-            if (isClicked)
-                show = false;
+            
         }
 
         public override void OnHover()

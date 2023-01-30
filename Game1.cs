@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Apos.Shapes;
 using Microsoft.Xna.Framework.Content;
+using RealGUI.RealGUI;
 
 namespace RealGUI
 {
@@ -28,8 +29,9 @@ namespace RealGUI
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            _graphics.PreferredBackBufferHeight = 960;
-            _graphics.PreferredBackBufferWidth = 1336;
+            _graphics.PreferredBackBufferHeight = Config.w_height;
+            _graphics.PreferredBackBufferWidth = Config.w_width;
+            Window.Title = Config.w_title;
         }
 
 

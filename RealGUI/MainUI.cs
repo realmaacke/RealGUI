@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Apos.Shapes;
 using System;
 using System.Linq;
+using RealGUI.RealGUI;
 
 namespace RealGUI
 {
@@ -45,8 +46,16 @@ namespace RealGUI
 
         public void init()
         {
-            // creating the widgets
-            Widgets.Add(new Container("Nav-Panel", new Vector2(0, 0), new Vector2(1336, 100), Color.Black));
+            Vector2 defaultBtnNav = Calculate.AlignButtonCenter(Config.nav_btn_size);
+
+
+            box navbar = new box("Nav-Panel", new Vector2(0, 0), new Vector2(1336, 100), Color.Black);
+            Widgets.Add(navbar);
+
+            // (int)(navbar.size.Y) / 2)
+
+
+            Widgets.Add(new Button("Nav-BUtton",new Vector2(defaultBtnNav.X + Config.navOffset, defaultBtnNav.Y / 2) ,new Vector2(Config.nav_btn_size.X, Config.nav_btn_size.Y), Color.Gray, "Home"));
 
             // initializing them
             Widgets.ForEach(e => e.init());
