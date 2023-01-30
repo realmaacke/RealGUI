@@ -1,11 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using RealGUI.RealGUI;
 
 namespace RealGUI
 {
     public class Game1 : Game
     {
+        // ui
+        private MainUI UI;
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
@@ -18,7 +22,10 @@ namespace RealGUI
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            UI = new MainUI(this, _graphics, _spriteBatch);
+
+
+            UI.init();
 
             base.Initialize();
         }
@@ -35,7 +42,8 @@ namespace RealGUI
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+
+            UI.update();
 
             base.Update(gameTime);
         }
@@ -44,7 +52,7 @@ namespace RealGUI
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            UI.draw();
 
             base.Draw(gameTime);
         }
