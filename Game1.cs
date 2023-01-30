@@ -11,10 +11,13 @@ namespace RealGUI
         // ui
         private MainUI UI;
 
+        //essentials
         private GraphicsDeviceManager _graphics;
-
         private SpriteBatch _spriteBatch;
         public ShapeBatch sb;
+
+        // fonts
+        public static SpriteFont default_font;
 
         public Game1()
         {
@@ -26,6 +29,12 @@ namespace RealGUI
             IsMouseVisible = true;
         }
 
+
+        public static SpriteFont GetDefaultFont()
+        {
+            return default_font;
+        }
+
         protected override void Initialize()
         {
             base.Initialize();
@@ -33,10 +42,14 @@ namespace RealGUI
 
         protected override void LoadContent()
         {
+            // built in
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             sb = new ShapeBatch(GraphicsDevice, Content);
 
+            // loading content
+            default_font = Content.Load<SpriteFont>("Font");
 
+            // 3rd party
             UI = new MainUI(this, _spriteBatch, sb);
 
             UI.init();

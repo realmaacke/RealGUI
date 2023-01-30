@@ -7,22 +7,23 @@ using System.Text;
 using System.Threading.Tasks;
 using Apos.Shapes;
 using Microsoft.Xna.Framework.Content;
-using System.Windows.Forms;
 
 namespace RealGUI
 {
-    public class box : Items
+    public class Button : Items
     {
-        public box(string name, Vector2 pos, Vector2 sze, Color Background) : base(name, pos, sze, Background)
+        string ButtonName;
+        SpriteFont default_font;
+        public Button(string name, Vector2 pos, Vector2 sze, Color Background, string ButtonName) : base(name, pos, sze, Background)
         {
-            
+            this.ButtonName = ButtonName;
+            this.default_font = font;
         }
-
-
         public override void init()
         {
             base.init();
         }
+
 
         public override void draw()
         {
@@ -32,6 +33,7 @@ namespace RealGUI
 
 
                 drawShapeBatch.DrawRectangle(position, size, BackgroundColor, BackgroundColor, 1);
+                drawGraphics.DrawString(font, ButtonName, Calculate.CenterofButton(position, size, font, ButtonName), Color.White);
 
                 drawShapeBatch.End();
             }
@@ -48,11 +50,5 @@ namespace RealGUI
             if (isClicked)
                 show = false;
         }
-
-        public override void OnHover()
-        {
-            base.OnHover();
-        }
-
     }
 }

@@ -1,11 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Apos.Shapes;
 using Microsoft.Xna.Framework.Input;
 
@@ -25,19 +19,29 @@ namespace RealGUI
         public Color BackgroundColor;
 
         // functionality
+        public string Name;
         public bool show = true;
         public bool isHovered = false;
         public bool isClicked = false;
 
-
         //Transforms
         Point Pointsize;
 
-
+        public Items(string name, Vector2 pos, Vector2 sze, Color Background)
+        {
+            this.Name = name;
+            this.position = pos;
+            this.size = sze;
+            this.BackgroundColor = Background;
+        }
 
         public virtual void init()
         {
             Pointsize = new Point((int)size.X, (int)size.Y);
+
+            drawShapeBatch = MainUI.GetShapeBatch();
+            drawGraphics = MainUI.GetSpriteBatch();
+            font = Game1.GetDefaultFont();
         }
 
         public abstract void draw();
