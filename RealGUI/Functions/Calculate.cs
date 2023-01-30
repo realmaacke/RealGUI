@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RealGUI
 {
@@ -12,6 +14,15 @@ namespace RealGUI
 
             return new Vector2(x, y);
         }
+    }
 
+    public static class Retrive
+    {
+        public static Items RetriveItem(List<Items> list, string name)
+        {
+            Items item = (Items)list.Where(i => i.Name == name);
+
+            return item;
+        }
     }
 }

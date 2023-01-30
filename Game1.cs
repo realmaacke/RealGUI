@@ -27,6 +27,9 @@ namespace RealGUI
 
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            _graphics.PreferredBackBufferHeight = 960;
+            _graphics.PreferredBackBufferWidth = 1336;
         }
 
 

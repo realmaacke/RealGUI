@@ -46,12 +46,7 @@ namespace RealGUI
         public void init()
         {
             // creating the widgets
-            Widgets.Add(new box("left-panel", new Vector2(10, 10), new Vector2(100, 100), Color.Black));
-            Widgets.Add(new box("right-panel", new Vector2(200, 200), new Vector2(100, 100), Color.Black));
-
-
-            Widgets.Add(new Button("Button-1", new Vector2(300, 300), new Vector2(200, 100), Color.Black, "Button"));
-
+            Widgets.Add(new Container("Nav-Panel", new Vector2(0, 0), new Vector2(1336, 100), Color.Black));
 
             // initializing them
             Widgets.ForEach(e => e.init());
